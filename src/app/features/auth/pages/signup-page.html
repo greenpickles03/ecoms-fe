@@ -1,0 +1,98 @@
+<main class="auth-layout auth-layout-signup">
+  <section class="auth-hero" aria-label="Signup introduction">
+    <p class="eyebrow">Nexa Commerce</p>
+    <h1>Build the account space your team can grow into.</h1>
+    <p class="hero-copy">
+      Create a structured workspace for catalog updates, order review, and daily retail
+      reporting without a cluttered onboarding screen.
+    </p>
+
+    <div class="hero-list" aria-label="What you get">
+      <article class="hero-list-item">
+        <span class="hero-list-number">01</span>
+        <div>
+          <h2>Clear ownership</h2>
+          <p>Separate staff workflows for merchandising, finance, and support.</p>
+        </div>
+      </article>
+      <article class="hero-list-item">
+        <span class="hero-list-number">02</span>
+        <div>
+          <h2>Launch-ready flow</h2>
+          <p>Auth screens already structured for API integration and validation rules.</p>
+        </div>
+      </article>
+      <article class="hero-list-item">
+        <span class="hero-list-number">03</span>
+        <div>
+          <h2>Flexible growth</h2>
+          <p>Designed to scale from solo operator to a multi-role commerce team.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="auth-panel" aria-labelledby="signup-title">
+    <div class="panel-header">
+      <div>
+        <p class="panel-kicker">Team onboarding</p>
+        <h2 id="signup-title">Sign up</h2>
+      </div>
+
+      <nav class="panel-switch" aria-label="Authentication pages">
+        <a class="panel-switch-link" routerLink="/login">Login</a>
+        <a aria-current="page" class="panel-switch-link is-active" routerLink="/signup">Sign up</a>
+      </nav>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="auth-form auth-form-signup" novalidate>
+      <label class="field">
+        <span>Full name</span>
+        <input formControlName="fullName" type="text" placeholder="Alex Morgan" />
+      </label>
+      @if (submitAttempted() && form.controls.fullName.invalid) {
+        <p class="field-error">Enter your full name.</p>
+      }
+
+      <div class="field">
+        <div>
+          <label class="field">
+            <span>Email address</span>
+            <input formControlName="email" type="email" placeholder="alex@company.com" />
+          </label>
+          @if (submitAttempted() && form.controls.email.invalid) {
+            <p class="field-error">Enter a valid email address.</p>
+          }
+        </div>
+      </div>
+
+      <label class="field">
+        <span>Password</span>
+        <input formControlName="password" type="password" placeholder="Create a strong password" />
+      </label>
+      @if (submitAttempted() && form.controls.password.invalid) {
+        <p class="field-error">Use a password with at least 8 characters.</p>
+      }
+
+      <label class="checkbox-field checkbox-field-wrap">
+        <input formControlName="agree" type="checkbox" />
+        <span>I agree to the terms and want product updates for the workspace.</span>
+      </label>
+      @if (submitAttempted() && form.controls.agree.invalid) {
+        <p class="field-error">You need to accept the terms to continue.</p>
+      }
+
+      <button class="primary-button" type="submit">Create account</button>
+
+      @if (statusMessage()) {
+        <p class="form-status" role="status">{{ statusMessage() }}</p>
+      }
+    </form>
+
+    <p class="panel-footnote">
+      Already have access?
+      <a class="text-link" routerLink="/login">Return to login</a>
+      and continue working.
+    </p>
+  </section>
+</main>
