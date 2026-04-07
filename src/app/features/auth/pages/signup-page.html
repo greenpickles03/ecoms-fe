@@ -54,21 +54,45 @@
         <p class="field-error">Enter your full name.</p>
       }
 
-      <div class="field">
-        <div>
-          <label class="field">
-            <span>Email address</span>
-            <input formControlName="email" type="email" placeholder="alex@company.com" />
-          </label>
-          @if (submitAttempted() && form.controls.email.invalid) {
-            <p class="field-error">Enter a valid email address.</p>
-          }
-        </div>
-      </div>
+      <label class="field">
+        <span>Email address</span>
+        <input formControlName="email" type="email" placeholder="alex@company.com" />
+      </label>
+      @if (submitAttempted() && form.controls.email.invalid) {
+        <p class="field-error">Enter a valid email address.</p>
+      }
 
       <label class="field">
         <span>Password</span>
-        <input formControlName="password" type="password" placeholder="Create a strong password" />
+        <div class="password-field-control">
+          <input
+            formControlName="password"
+            [type]="showPassword() ? 'text' : 'password'"
+            placeholder="Create a strong password"
+          />
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePasswordVisibility()"
+            [attr.aria-label]="showPassword() ? 'Password is visible' : 'Show password'"
+            [attr.aria-pressed]="showPassword()"
+          >
+            @if (showPassword()) {
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="password-toggle-icon">
+                <path
+                  d="M3 3l18 18M10.58 10.58a2 2 0 0 0 2.84 2.84M9.88 5.09A9.76 9.76 0 0 1 12 4.8c4.97 0 8.27 4.3 9.2 5.7-.36.54-1.09 1.54-2.17 2.57M6.61 6.62C4.81 7.87 3.58 9.5 2.8 10.5c.93 1.4 4.23 5.7 9.2 5.7a9.8 9.8 0 0 0 4.23-.95"
+                />
+              </svg>
+            } @else {
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="password-toggle-icon">
+                <path
+                  d="M2.8 12c.93-1.4 4.23-5.7 9.2-5.7s8.27 4.3 9.2 5.7c-.93 1.4-4.23 5.7-9.2 5.7S3.73 13.4 2.8 12Z"
+                />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            }
+          </button>
+        </div>
       </label>
       @if (submitAttempted() && form.controls.password.invalid) {
         <p class="field-error">Use a password with at least 8 characters.</p>
