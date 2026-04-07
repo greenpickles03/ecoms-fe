@@ -10,10 +10,6 @@
     "serve:ssr:fe": "node dist/fe/server/server.mjs"
   },
   "private": true,
-  "engines": {
-    "node": "22.x",
-    "npm": "11.x"
-  },
   "packageManager": "npm@11.9.0",
   "dependencies": {
     "@angular/common": "^21.2.0",
