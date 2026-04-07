@@ -1,0 +1,68 @@
+<main class="auth-layout auth-layout-otp">
+  <section class="auth-hero" aria-label="Send verification code introduction">
+    <p class="eyebrow">Nexa Commerce</p>
+    <h1>Send a reset code without slowing down the shift.</h1>
+    <p class="hero-copy">
+      Trigger a one-time code for the account email, keep recovery contained, and move the
+      user directly into a controlled password reset flow.
+    </p>
+
+    <div class="hero-grid" aria-label="Recovery highlights">
+      <article class="hero-stat">
+        <span class="hero-stat-value">Secure</span>
+        <span class="hero-stat-label">email-first recovery request</span>
+      </article>
+      <article class="hero-stat">
+        <span class="hero-stat-value">Fast</span>
+        <span class="hero-stat-label">single-field request for support teams</span>
+      </article>
+      <article class="hero-stat hero-stat-wide">
+        <span class="hero-stat-value">Next step</span>
+        <span class="hero-stat-label">enter the OTP with a new password on the reset page</span>
+      </article>
+    </div>
+
+    <div class="hero-note">
+      <p class="hero-note-label">Recovery rule</p>
+      <p class="hero-note-text">
+        Codes should expire quickly and only be accepted once the matching email is provided.
+      </p>
+    </div>
+  </section>
+
+  <section class="auth-panel" aria-labelledby="send-otp-title">
+    <div class="panel-header">
+      <div>
+        <p class="panel-kicker">Password recovery</p>
+        <h2 id="send-otp-title">Send OTP</h2>
+      </div>
+
+      <nav class="panel-switch" aria-label="Authentication pages">
+        <a class="panel-switch-link" routerLink="/login">Login</a>
+        <a class="panel-switch-link" routerLink="/signup">Sign up</a>
+      </nav>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="auth-form" novalidate>
+      <label class="field">
+        <span>Email address</span>
+        <input formControlName="email" type="email" placeholder="you@company.com" />
+      </label>
+      @if (submitAttempted() && form.controls.email.invalid) {
+        <p class="field-error">Enter the email address tied to the account.</p>
+      }
+
+      <button class="primary-button" type="submit">Send code</button>
+
+      @if (statusMessage()) {
+        <p class="form-status" role="status">{{ statusMessage() }}</p>
+      }
+    </form>
+
+    <p class="panel-footnote">
+      Already have a code?
+      <a class="text-link" routerLink="/forgot-password">Reset the password</a>
+      now.
+    </p>
+  </section>
+</main>

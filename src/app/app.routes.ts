@@ -17,6 +17,16 @@ export const routes: Routes = [
 		loadComponent: () => import('./features/auth/pages/signup-page').then((module) => module.SignupPage)
 	},
 	{
+		path: 'send-otp',
+		title: 'Send OTP',
+		loadComponent: () => import('./features/auth/pages/send-otp-page').then((module) => module.SendOtpPage)
+	},
+	{
+		path: 'forgot-password',
+		title: 'Forgot Password',
+		loadComponent: () => import('./features/auth/pages/forgot-password-page').then((module) => module.ForgotPasswordPage)
+	},
+	{
 		path: '**',
 		redirectTo: 'login'
 	}

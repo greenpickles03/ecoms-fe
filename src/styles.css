@@ -441,6 +441,18 @@ a {
 		linear-gradient(160deg, #1a3650 0%, #255c5d 55%, #d97757 100%);
 }
 
+.auth-layout-otp .auth-hero {
+	background:
+		radial-gradient(circle at top center, rgba(255, 248, 230, 0.16), transparent 24%),
+		linear-gradient(160deg, #193148 0%, #315b8a 48%, #e07a5f 100%);
+}
+
+.auth-layout-reset .auth-hero {
+	background:
+		radial-gradient(circle at top left, rgba(255, 248, 230, 0.18), transparent 20%),
+		linear-gradient(160deg, #102a43 0%, #1f4b63 45%, #2a9d8f 100%);
+}
+
 @media (max-width: 960px) {
 	.auth-layout {
 		grid-template-columns: 1fr;
